@@ -43,16 +43,8 @@ exports.findOne  = function(req,res){
 
 
 exports.update = function(req,res){
-    let cliente = {
-        nombre: req.body.nombre,
-        apellido_p: req.body.apellido_p,
-        apellido_m: req.body.apellido_m,
-        telefono: req.body.telefono,
-        email: req.body.direccion,
-        direccion : req.body.direccion
-    }
-
-    Cliente.findByIdAndUpdate(req.params.id, {$set: cliente}, function(err){
+    
+    Cliente.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err){
         if(err){
             console.error(err),
             response.exito = false,
